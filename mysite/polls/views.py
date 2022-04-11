@@ -1,5 +1,5 @@
 import os
-from curses.ascii import HT
+# from curses.ascii import HT
 from urllib import response
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse, HttpResponseRedirect
