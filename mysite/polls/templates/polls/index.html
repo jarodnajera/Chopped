@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Enable mobile view -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chopped!</title>
+        <!-- Normalize across browsers -->
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <!-- Font awesome imports -->
+        <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Index Styles -->
+        <style>
+            .logo {
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1 style="float: left">
+                <img src="https://raw.githubusercontent.com/jarodnajera/Chopped/main/imgs/CHOPPED!%20logo%20(1).png" alt="CHOPPED!" width="150" height="150">
+                </h1>
+                <p>
+                    {% if latest_question_list %}
+                <ul>
+                {% for question in latest_question_list %}
+                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+                </p>
+            </div>
+        </header>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
+
