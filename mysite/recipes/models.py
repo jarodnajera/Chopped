@@ -10,15 +10,16 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
+    recipe_id = models.IntegerField()
     minutes = models.IntegerField()
     contributor_id = models.IntegerField()
     submitted = models.DateField()
-    tags = models.JSONField()
-    nutrition = models.JSONField()
+    tags = models.TextField()
+    nutrition = models.TextField()
     n_steps = models.IntegerField()
-    steps = models.JSONField()
+    steps = models.TextField()
     description = models.TextField()
-    ingredients = models.JSONField()
+    ingredients = models.TextField()
     n_ingredients = models.IntegerField()
 
 
