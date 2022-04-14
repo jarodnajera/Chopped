@@ -18,9 +18,10 @@ from django.urls import include, path
 from recipes.views import HomePageView, SearchResultsView
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
-    path('recipes/', include('recipes.urls')),
+    #path('polls/', include('polls.urls')),
+    #path('recipes/', include('recipes.urls')),
     path('admin/', admin.site.urls),
-    path("search/", SearchResultsView.as_view(), name="search_results"),
-    path("", HomePageView.as_view(), name="home"),
+    #path("search/", SearchResultsView.as_view(), name="search_results"),
+    #path("", HomePageView.as_view(), name="home"),
+    path('', include('recipes.urls')),
 ]

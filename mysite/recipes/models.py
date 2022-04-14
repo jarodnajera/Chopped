@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Ingredient(models.Model):
     raw_ingr = models.CharField(max_length=255)
@@ -9,18 +10,21 @@ class Ingredient(models.Model):
     count = models.IntegerField()
 
 class Recipe(models.Model):
-    name = models.CharField(max_length=255)
-    recipe_id = models.IntegerField()
-    minutes = models.IntegerField()
-    contributor_id = models.IntegerField()
-    submitted = models.DateField()
-    tags = models.TextField()
-    nutrition = models.TextField()
-    n_steps = models.IntegerField()
-    steps = models.TextField()
-    description = models.TextField()
-    ingredients = models.TextField()
-    n_ingredients = models.IntegerField()
+    name = models.CharField(max_length=255, default='')
+    recipe_id = models.IntegerField(default=0)
+    minutes = models.PositiveSmallIntegerField(default=0, blank=True)
+    contributor_id = models.IntegerField(default=0, blank=True)
+    submitted = models.DateTimeField(default=datetime.now)
+    tags = models.TextField(blank=True)
+    nutrition = models.TextField(blank=True)
+    n_steps = models.PositiveSmallIntegerField(default=0, blank=True)
+    steps = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+    ingredients = models.TextField(blank=True)
+    n_ingredients = models.IntegerField(default=0, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
     

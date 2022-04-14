@@ -1,0 +1,28 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+    
+    {% if searched %}
+    <center>
+        <hl>You searched for {{ searched }}</hl>
+    </center>
+    <br/>
+        {% for recipe in recipes %}
+        <strong>{{ recipe.name }}</strong>
+        <ul>
+            <li>Description: {{ recipe.description }} </li>
+            <li>Minutes Needed: {{ recipe.minutes_needed }} </li>
+            <li>Number of Steps: {{ recipe.num_steps }} </li>
+            <li>Directions: {{ recipe.directions }} </li>
+        </ul>
+        
+            
+    {% endfor %}
+    {% else %}
+        <h1>Hey! You forgot to search for a recipe...</h1>
+    {% endif %}
+    
+    
+
+{% endblock %}
