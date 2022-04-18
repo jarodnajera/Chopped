@@ -14,7 +14,7 @@ class Recipe(models.Model):
     recipe_id = models.IntegerField(default=0)
     minutes = models.PositiveSmallIntegerField(default=0, blank=True)
     contributor_id = models.IntegerField(default=0, blank=True)
-    submitted = models.DateTimeField(default=datetime.now)
+    submitted = models.CharField(max_length=255, default='')
     tags = models.TextField(blank=True)
     nutrition = models.TextField(blank=True)
     n_steps = models.PositiveSmallIntegerField(default=0, blank=True)
