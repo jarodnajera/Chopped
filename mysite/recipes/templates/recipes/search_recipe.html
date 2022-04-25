@@ -8,7 +8,7 @@
         <hl>You searched for {{ searched }}</hl>
     </center>
     <br/>
-        {% for recipe in recipes %}
+        {% for recipe in imported_recipes.db %}
         <strong>{{ recipe.name }}</strong>
         <ul>
             <li>Description: {{ recipe.description }} </li>
