@@ -1,1 +1,5 @@
 chopped_ui/node_modules
+chopped_ui/package-lock.json
+chopped_ui/package.json
+chopped_ui/vite.config.js
+README.md

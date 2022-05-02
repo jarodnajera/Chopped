@@ -2,44 +2,53 @@ import React, { useState } from 'react';
 import Sidebar from '../Sidebar';
 import Navbar from '../Navbar';
 
-const RecipesPage = ( {recipe_query} ) => {
-
+const RecipesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
       setIsOpen(!isOpen);
   }
 
-    const [ans, setAns] = React.useState();
+  function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+  }
 
-    const getAnswer = async () => {
-      const res = await fetch('http://localhost:3001/api');
-      const data = await res.json();
-      const recipes_dict = Object.values(data);
-      let wanted_recipe = "";
-      for (const key in recipes_dict) {
-        if (recipes_dict[key].name == 'arriba baked winter squash mexican style') {
-          console.log(recipes_dict[key])
-          wanted_recipe = recipes_dict[key]
-        }
-      }
+  const handle_submit = (event) => {
+    event.preventDefault();
+    
+    const curr_recipe = document.getElementById('recipename').value;
+    let parent = document.getElementById("recipe-container")
+    removeAllChildNodes(parent);
 
-      setAns(wanted_recipe);
-    };
+    fetch('http://localhost:3001/api')
+      .then(response => response.json())
+      .then(data => displayRecipe(data[curr_recipe]))
+  }
 
-    React.useEffect(() => {
-      getAnswer();
-    }, []);
+  function displayRecipe(recipe){
+    var rec = document.createElement('div');
+    rec.innerHTML = '<div id = "recipe-container"><p id = "recipename">' + recipe.name + '</p><p id="recipedesc">' + recipe.description + '</p>';
+    document.getElementById("recipe-container").appendChild(rec);
+  }
 
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <p>{JSON.stringify(ans.name)}</p>
-      <form action={recipe_query}>
-        <label for="rname"> Recipe Name: </label><br/>
-        <input type="text" id="rname" name="rname"/><br/>
+
+      {/* Testing form for getting and displaying input*/}
+      <h2>Search for a Recipe</h2>
+      <form onSubmit={handle_submit}>
+        <label htmlFor='recipename'>Recipe Name:</label><br/>
+        <input type='text' id='recipename' name='recipename'/><br/>
       </form>
+      <br/>
+      <div id = "recipe-container">
+        <p id = "recipename"></p>
+        <p id = "recipedesc"></p>
+      </div>
     </>
   );
 };
