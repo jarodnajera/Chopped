@@ -9,7 +9,6 @@ const RecipesPage = ( {recipe_query} ) => {
   const toggle = () => {
       setIsOpen(!isOpen);
   }
-
     const [ans, setAns] = React.useState();
 
     const getAnswer = async () => {
@@ -19,14 +18,15 @@ const RecipesPage = ( {recipe_query} ) => {
       let wanted_recipe = "";
       for (const key in recipes_dict) {
         if (recipes_dict[key].name == 'arriba baked winter squash mexican style') {
-          console.log(recipes_dict[key])
-          wanted_recipe = recipes_dict[key]
+          console.log(recipes_dict[key]);
+          wanted_recipe = recipes_dict[key];
         }
       }
 
       setAns(wanted_recipe);
     };
 
+    
     React.useEffect(() => {
       getAnswer();
     }, []);
@@ -35,7 +35,6 @@ const RecipesPage = ( {recipe_query} ) => {
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <p>{JSON.stringify(ans.name)}</p>
       <form action={recipe_query}>
         <label for="rname"> Recipe Name: </label><br/>
         <input type="text" id="rname" name="rname"/><br/>
