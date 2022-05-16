@@ -33,6 +33,11 @@ export default {
           this.pop_recipes[i].rating +
           "</p>";
       });
+    },
+    submit(event, num, rating){
+      this.pop_recipes[num].rating = rating;
+      console.log(this.pop_recipes[num].rating);
+      alert("changed rating to "+ rating);
     }
   },
   mounted() {
@@ -48,46 +53,60 @@ export default {
       <div class="pop-recipe" id="popular-recipe-1"></div>
       <div class = "upvote">
         <br><br>
-        <button type = "button" @click = "count1++"> ▲ </button>
+        <button type = "button" @click = "count1++" :disabled="count1 === 5"> ▲ </button>
         <p className = "votecounter">{{count1}}</p>
-        <button  type = "button" @click = "count1--"> ▼ </button>
-        <p></p>
+        <button  type = "button" @click = "count1--" :disabled="count1 === 0"> ▼ </button>
+      </div>
+      <div class = "submit">
+        <button type="submit" @click="submit($event, 0, count1)">submit</button>
       </div>
     </div>
     <div class="pop-recipe-container">
       <div class="pop-recipe" id="popular-recipe-2"></div>
       <div class = "upvote">
         <br><br>
-        <button type = "button" @click = "count2++"> ▲ </button>
+        <button type = "button" @click = "count2++" :disabled="count2 === 5"> ▲ </button>
         <p className = "votecounter">{{count2}}</p>
-        <button  type = "button" @click = "count2--"> ▼ </button>
+        <button  type = "button" @click = "count2--" :disabled="count2 === 0"> ▼ </button>
+      </div>
+      <div class = "submit">
+        <button type="submit" @click="submit">submit</button>
       </div>
     </div>
     <div class="pop-recipe-container">
       <div class="pop-recipe" id="popular-recipe-3"></div>
       <div class = "upvote">
         <br><br>
-        <button type = "button" @click = "count3++"> ▲ </button>
+        <button type = "button" @click = "count3++" :disabled="count3 === 5"> ▲ </button>
         <p className = "votecounter">{{count3}}</p>
-        <button  type = "button" @click = "count3--"> ▼ </button>
+        <button  type = "button" @click = "count3--" :disabled="count3 === 0"> ▼ </button>
+      </div>
+      <div class = "submit">
+        <button type="submit" @click="submit">submit</button>
       </div>
     </div>
     <div class="pop-recipe-container">
       <div class="pop-recipe" id="popular-recipe-4"></div>
       <div class = "upvote">
         <br><br>
-        <button type = "button" @click = "count4++"> ▲ </button>
+        <button type = "button" @click = "count4++" :disabled="count4 === 5"> ▲ </button>
         <p className = "votecounter">{{count4}}</p>
-        <button  type = "button" @click = "count4--"> ▼ </button>
+        <button  type = "button" @click = "count4--" :disabled="count4 === 0"> ▼ </button>
+      </div>
+      <div class = "submit">
+        <button type="submit" @click="submit">submit</button>
       </div>
     </div>
     <div class="pop-recipe-container">
-      <div class="pop-recipe" id="popular-recipe-5"></div>
+      <div class="pop-recipe" id="popular-recipe-5" ></div>
       <div class = "upvote">
         <br><br>
-        <button type = "button" @click = "count5++"> ▲ </button>
+        <button type = "button" @click = "count5++" :disabled="count5 === 5"> ▲ </button>
         <p className = "votecounter">{{count5}}</p>
-        <button  type = "button" @click = "count5--"> ▼ </button>
+        <button  type = "button" @click = "count5--" :disabled="count5 === 0"> ▼ </button>
+      </div>
+      <div class = "submit">
+        <button type="submit" @click="submit">submit</button>
       </div>
     </div>
     <!-- <div class="pop-recipe" id="popular-recipe-2"></div>
