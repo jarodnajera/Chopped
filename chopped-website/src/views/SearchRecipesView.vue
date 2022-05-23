@@ -59,8 +59,20 @@ export default {
           <h2>
           ${element.name}
           </h2>
+          <p>ID:
+          ${element.id}
+          </p>
           <p>Rating:
           ${element.rating}
+          </p>
+          <p>Ingredients:
+          ${element.ingredients}
+          </p>
+          <p>Description:
+          ${element.description}
+          </p>
+          <p>Instructions:
+          ${element.steps}
           </p>
           </div>
           <div id = "upvote" style = "max-width: 200px; float: right">
@@ -90,7 +102,6 @@ export default {
 
 <template>
   <div class="search-recipes">
-    <br><br><br><br><br><br>
     <div class="search">
       <div class="user-search">
         <h3>Search for a Recipe</h3>
