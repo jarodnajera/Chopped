@@ -34,11 +34,23 @@ export default {
           "</p>";
       });
     },
-    submit(event, num, rating){
+    submit(event, num, rating) {
       this.pop_recipes[num].rating = rating;
       console.log(this.pop_recipes[num].rating);
-      alert("changed rating to "+ rating);
-    }
+      alert("changed rating to " + rating);
+      let recipe_index = num + 1;
+      let change_recipe = document.getElementById(
+        "popular-recipe-" + recipe_index.toString()
+      );
+      change_recipe.innerHTML = "";
+      change_recipe.innerHTML =
+        "<h2>" +
+        this.pop_recipes[num].name +
+        "</h2>" +
+        "<p>Rating: " +
+        this.pop_recipes[num].rating +
+        "</p>";
+    },
   },
   mounted() {
     this.get_popular_recipes();
