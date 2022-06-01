@@ -27,6 +27,8 @@ export default {
         <input type="text" id="recipeingr" name="recipeingr" /><br />
         <label for="recipeauthor">Author:</label><br />
         <input type="text" id="recipeauthor" name="recipeauthor" /><br />
+        <label for="recipesteps">Steps:</label><br />
+        <input type="text" id="recipesteps" name="recipesteps" /><br />
         <button type="submit">Send</button>
       </form>
       <div id="update"></div>

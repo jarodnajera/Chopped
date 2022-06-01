@@ -6,6 +6,7 @@ export default class EditRecipeHandler {
     var recipe_time = document.getElementById("recipetime").value;
     var recipe_ingredients = document.getElementById("recipeingr").value;
     var recipe_author = document.getElementById("recipeauthor").value;
+    var recipe_steps = document.getElementById("recipesteps").value;
     var found_recipe = false;
 
     fetch("http://localhost:3001/api")
@@ -37,6 +38,7 @@ export default class EditRecipeHandler {
       author: recipe_author,
       description: recipe_desc,
       ingredients: recipe_ingredients,
+      steps: recipe_steps,
     };
 
     fetch("http://localhost:3001/api", {

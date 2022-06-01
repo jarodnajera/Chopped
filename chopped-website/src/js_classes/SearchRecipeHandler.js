@@ -67,20 +67,17 @@ export default class SearchRecipeHandler {
             ${element.steps}
             </p>
             </div>
-            <div id = "upvote" style = "max-width: 200px; float: right">
-              <input type="number" id="rating" name="rating" /><br /> 
-            </div>
           </div>
           `;
       document.getElementById("results").appendChild(rec);
 
-      var btn = document.createElement("button");
-      btn.innerHTML = "submit";
-      btn.onclick = function () {
-        var rat = document.getElementById("rating").value;
-        console.log(rat);
-      };
-      document.getElementById("results").appendChild(btn);
+      // var btn = document.createElement("button");
+      // btn.innerHTML = "submit";
+      // btn.onclick = function () {
+      //   var rat = document.getElementById("rating").value;
+      //   console.log(rat);
+      // };
+      // document.getElementById("results").appendChild(btn);
     });
   }
 
