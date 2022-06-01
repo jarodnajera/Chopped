@@ -29,7 +29,7 @@ export default {
           <h2>
           ${this.pop_recipes[i].name}
           </h2>
-          <p>Rating:
+          <p>Average Rating:
           ${this.pop_recipes[i].rating}
           </p>
           <p>Ingredients:

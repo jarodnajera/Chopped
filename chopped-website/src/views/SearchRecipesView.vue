@@ -62,7 +62,7 @@ export default {
           <p>ID:
           ${element.id}
           </p>
-          <p>Rating:
+          <p>Average Rating:
           ${element.rating}
           </p>
           <p>Ingredients:
