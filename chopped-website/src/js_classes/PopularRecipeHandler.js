@@ -16,19 +16,57 @@ export default class PopularRecipeHandler {
   }
 
   display_recipes(dict) {
-    for (var key in dict) {
-      if (dict[key].rating >= 5) {
-        this.pop_recipes.push(dict[key]);
+    var arr = [];
+      for(var i in dict){
+        arr.push(dict[i]);
       }
-    }
+      // console.log(dict);
+
+      arr.sort((a,b) => {
+        let arat = a.rating;
+        let brat = b.rating;
+
+        if(arat > brat){
+          return -1;
+        }
+
+        if(arat < brat){
+          return 1;
+        }
+
+        return 0;
+      })
+
+      console.log(arr);
+      // for (var key in dict) {
+      //   if ("rating" in dict[key]) {
+      //     this.pop_recipes.push(dict[key]);
+      //   }
+      // }
+      for(let j = 0; j < 5; j++){
+        console.log(arr[j]);
+        this.pop_recipes.push(arr[j]);
+      }
     const parent_object = document.getElementsByClassName("pop-recipe");
     [...parent_object].forEach((parent, i) => {
+      if (this.pop_recipes[i].rating != undefined) {
+        var recipe_rating = parseInt(this.pop_recipes[i].rating);
+      }
+  
+      if (this.pop_recipes[i].count != undefined) {
+        console.log("If");
+        var recipe_count = parseInt(this.pop_recipes[i].count);
+      } else {
+        console.log("Else");
+        var recipe_count = 1;
+      }
+      let avg = this.calc_avg(recipe_rating, recipe_count);
       parent.innerHTML = `
             <h2>
             ${this.pop_recipes[i].name}
             </h2>
             <p>Rating:
-            ${this.pop_recipes[i].rating}
+            ${avg}
             </p>
             <p>Ingredients:
             ${this.pop_recipes[i].ingredients}
@@ -46,7 +84,8 @@ export default class PopularRecipeHandler {
   calc_avg(rating, count) {
     console.log(rating);
     console.log(count);
-    return rating / count;
+    let avg = rating / count;
+    return avg.toFixed(2);
   }
 
   submit(event, num, rating) {
