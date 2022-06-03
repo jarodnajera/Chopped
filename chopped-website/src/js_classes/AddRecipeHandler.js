@@ -5,6 +5,7 @@ export default class AddRecipeHandler {
     var recipe_time = document.getElementById("recipetime").value;
     var recipe_ingredients = document.getElementById("recipeingr").value;
     var recipe_author = document.getElementById("recipeauthor").value;
+    var recipe_steps = document.getElementById("recipesteps").value;
     var recipe_id = Math.floor(Math.random() * 90000) + 10000;
     recipe_id = recipe_id.toString();
 
@@ -21,6 +22,7 @@ export default class AddRecipeHandler {
       author: recipe_author,
       description: recipe_desc,
       ingredients: recipe_ingredients,
+      steps: recipe_steps,
     };
 
     fetch("http://localhost:3001/api", {

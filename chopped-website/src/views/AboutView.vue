@@ -2,7 +2,9 @@
   <div class="about-page">
     <div class="info">
       <h1>About Us</h1>
-      <p>What's Up</p>
+      <p>Jared Najera</p>
+      <p>Noah Stodder</p>
+      <p>CS 180</p>
     </div>
   </div>
 </template>

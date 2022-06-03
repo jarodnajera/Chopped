@@ -94,6 +94,7 @@ export default class PopularRecipeHandler {
     var recipe_desc = this.pop_recipes[num].description;
     var recipe_time = this.pop_recipes[num].minutes;
     var recipe_ingredients = this.pop_recipes[num].ingredients;
+    var recipe_steps = this.pop_recipes[num].steps;
 
     if (this.pop_recipes[num].rating != undefined) {
       var recipe_rating = parseInt(this.pop_recipes[num].rating) + rating;
@@ -139,6 +140,7 @@ export default class PopularRecipeHandler {
       minutes: recipe_time,
       description: recipe_desc,
       ingredients: recipe_ingredients,
+      steps: recipe_steps,
       rating: recipe_rating,
       count: recipe_count,
     };
