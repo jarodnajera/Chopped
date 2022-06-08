@@ -67,17 +67,28 @@ export default class SearchRecipeHandler {
             ${element.steps}
             </p>
             </div>
+            <div id = "results">
+            </div>
           </div>
           `;
       document.getElementById("results").appendChild(rec);
 
-      // var btn = document.createElement("button");
-      // btn.innerHTML = "submit";
-      // btn.onclick = function () {
-      //   var rat = document.getElementById("rating").value;
-      //   console.log(rat);
-      // };
-      // document.getElementById("results").appendChild(btn);
+      var btn = document.createElement("button");
+      btn.innerHTML = "delete";
+      btn.onclick = function () {
+        console.log("what");
+        fetch("http://localhost:3001/api", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(element),
+        })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error("error: ", error));
+      };
+      document.getElementById("results").appendChild(btn);
     });
   }
 

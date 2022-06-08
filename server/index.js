@@ -2,6 +2,7 @@ const recipes = require('./data/recipes.json');
 const body_parser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+const { Recoverable } = require('repl');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -23,6 +24,23 @@ app.post('/api', (req, res) => {
         }
     }
     dict[req.body.name] = req.body;
+    var write_json = JSON.stringify(dict);
+    var fs = require('fs');
+    fs.writeFile('./data/recipes.json', write_json, 'utf8', function(err) {
+        if (err) throw err;
+    });
+});
+
+app.delete('/api', (req, res) => {
+    const id = req.body.id;
+    const json_string = JSON.stringify(recipes);
+    var dict = JSON.parse(json_string);
+    for (var key in dict){
+        if(dict[key].id == id){
+            delete dict[key];
+        }
+    }
+    console.log("here");
     var write_json = JSON.stringify(dict);
     var fs = require('fs');
     fs.writeFile('./data/recipes.json', write_json, 'utf8', function(err) {
